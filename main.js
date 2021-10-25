@@ -29,7 +29,7 @@ const ajaxData = async(page, state) => {
         })
           .then(checkStatus)
           .then(parseJSON);
-        container.innerHTML=`<p class=\"text-secondary text-center m-3\">Nombre de résultats ${data.total_results} - Page: ${data.page}</p>`
+        container.innerHTML= (state==='nom')? `<p class=\"text-secondary text-center m-3\">Nombre de résultats ${data.total_results} - Page: ${data.page}</p>` : ''
         var beautifuler=`
             <div class='container text-center border border-primary'>
                 <div class='row p-3 border-primary border-bottom'>
