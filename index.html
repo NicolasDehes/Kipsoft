@@ -14,7 +14,7 @@
         <div class="input-group">
             <input type="search" class="form-control rounded" placeholder="Rechercher un SIRET ou un nom d'entreprise" aria-label="Search"
             aria-describedby="search-addon" id="searchInput"/>
-            <button type="button" class="btn btn-outline-primary" id="searchButton">search</button>
+            <button type="button" class="btn btn-outline-primary" id="searchButton" onclick="ajaxData(page);">search</button>
         </div>
         <div class="container mt-5" id="content">
             <p class="text-secondary text-center m-5">
@@ -26,8 +26,7 @@
     
     <script src="main.js"></script>
     <script>
-        var searchInput = document.getElementById('searchInput')
-        document.getElementById('searchButton').setAttribute('onclick','ajaxData(searchInput.value);')
+        var page = 1
     </script>
 </body>
 </html>
