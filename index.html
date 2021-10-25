@@ -12,9 +12,11 @@
     <div class="container">
         <h1 class="m-3 text-center">Test Kpisoft Nicolas Dehes</h1>
         <div class="input-group">
+            <button id="nomButton" onclick="setState('nom')" class="btn btn-primary" type="button">Nom</button>
+            <button id="siretButton" onclick="setState('siret')" class="btn btn-outline-primary" type="button">Siret</button>
             <input type="search" class="form-control rounded" placeholder="Rechercher un SIRET ou un nom d'entreprise" aria-label="Search"
             aria-describedby="search-addon" id="searchInput"/>
-            <button type="button" class="btn btn-outline-primary" id="searchButton" onclick="ajaxData(page);">search</button>
+            <button type="button" class="btn btn-outline-primary" id="searchButton" onclick="ajaxData(page,state);">search</button>
         </div>
         <div class="container mt-5" id="content">
             <p class="text-secondary text-center m-5">
@@ -27,6 +29,28 @@
     <script src="main.js"></script>
     <script>
         var page = 1
+        var state = "nom"
+        var nomButton = document.getElementById('nomButton')
+        var siretButton = document.getElementById('siretButton')
+        var setState = (temp) => {
+            state = temp
+            if(state=="nom"){
+                nomButton.classList.remove('btn-outline-primary')
+                nomButton.classList.add('btn-primary')
+                siretButton.classList.remove('btn-primary')
+                siretButton.classList.add('btn-outline-primary')
+            } else {
+                siretButton.classList.remove('btn-outline-primary')
+                siretButton.classList.add('btn-primary')
+                nomButton.classList.remove('btn-primary')
+                nomButton.classList.add('btn-outline-primary')
+            }
+        }
+        document.addEventListener('keyup',function(e){
+            if (e.keyCode === 13) {
+                ajaxData(page, state);
+            }
+        })
     </script>
 </body>
 </html>
